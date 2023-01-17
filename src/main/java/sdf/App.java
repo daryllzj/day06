@@ -1,7 +1,12 @@
 package sdf;
 
+import java.util.ArrayList;
+import java.util.Comparator;
+import java.util.List;
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
+import java.util.stream.Collector;
+import java.util.stream.Collectors;
 
 /**
  * Hello world!
@@ -86,6 +91,40 @@ public final class App {
         System.out.println("minusOperation: " + minusOperation.process(10, 2));
         System.out.println("concatenateString: " + concatenateString.process("dog and ", "cat"));
         printString.printMessage("dog and cat via printString");
-    
+
+        List <Employee> employees = new ArrayList<>();
+        employees.add(new Employee(1, "Tim", "Ong", 1000));
+        employees.add(new Employee(2, "Tom", "Ang", 2000));
+        employees.add(new Employee(3, "Tam", "Eng", 3000));
+        employees.add(new Employee(4, "Timmy", "Ng", 4000));
+        employees.add(new Employee(5, "Tommy", "Long", 5000));
+
+        System.out.println("before sorted");
+        employees.forEach(e -> System.out.println(e));
+
+        
+
+        // contains is case sensitive. need to change names to lower
+        // List<Employee> filteredEmployee = employees.stream().filter(e -> e.getLastname().toLowerCase().contains("on")).collect(Collectors.toList());
+
+        // create sorted list
+        List<Employee> filteredEmployee = employees.stream().filter(e -> e.getLastname().contains("on")).collect(Collectors.toList());
+        System.out.println("filtered list");
+        filteredEmployee.forEach(emp -> System.out.println(emp));
+
+        System.out.println("after sorted");
+        employees.sort(Comparator.comparing(e -> e.getFirstName()));
+        employees.forEach(e -> System.out.println(e));
+
+        System.out.println("after reversed sorted");
+        Comparator<Employee> compare = Comparator.comparing(e-> e.getFirstName());
+        employees.sort(compare.reversed());
+        employees.forEach(e -> System.out.println(e));
+
+        System.out.println("sort by group");
+        Comparator<Employee> groupBycompare = Comparator.comparing(Employee::getFirstName).thenComparing(e -> e.getLastname());
+        employees.sort(groupBycompare);
+        employees.forEach(e -> System.out.println(e));
+
     }
 }
