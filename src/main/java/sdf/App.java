@@ -93,11 +93,11 @@ public final class App {
         printString.printMessage("dog and cat via printString");
 
         List <Employee> employees = new ArrayList<>();
-        employees.add(new Employee(1, "Tim", "Ong", 1000));
-        employees.add(new Employee(2, "Tom", "Ang", 2000));
-        employees.add(new Employee(3, "Tam", "Eng", 3000));
-        employees.add(new Employee(4, "Timmy", "Ng", 4000));
-        employees.add(new Employee(5, "Tommy", "Long", 5000));
+        employees.add(new Employee(1, "Adam", "Ong", 1000));
+        employees.add(new Employee(2, "Mark", "Ang", 2000));
+        employees.add(new Employee(3, "Benjamin", "Ang", 3000));
+        employees.add(new Employee(4, "Ben", "Ng", 4000));
+        employees.add(new Employee(5, "Richard", "Long", 5000));
 
         System.out.println("before sorted");
         employees.forEach(e -> System.out.println(e));
