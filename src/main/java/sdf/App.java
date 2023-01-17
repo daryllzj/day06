@@ -54,13 +54,38 @@ public final class App {
         // executorService.execute(mRI5);
         // executorService.shutdown();
 
-        ExecutorService executorService = Executors.newCachedThreadPool();
-        executorService.execute(mRI1);
-        executorService.execute(mRI2);
-        executorService.execute(mRI3);
-        executorService.execute(mRI4);
-        executorService.execute(mRI5);
-        executorService.shutdown();
+        // ExecutorService executorService = Executors.newCachedThreadPool();
+        // executorService.execute(mRI1);
+        // executorService.execute(mRI2);
+        // executorService.execute(mRI3);
+        // executorService.execute(mRI4);
+        // executorService.execute(mRI5);
+        // executorService.shutdown();
+
+        // MyRunnerInterface<Integer> addOperation = (a, b) -> {
+        //     return a + b;
+        // };
+
+        MyRunnerInterface<Integer> multiplyOperation = (a, b) -> {
+            return a * b;
+        };
+
+        MyRunnerInterface<Integer> minusOperation = (a, b) -> {
+            return a - b;
+        };
+
+        // without {} for short line of code
+        MyRunnerInterface<Integer> addOperation = (a, b) -> a + b;
+
+        MyRunnerInterface<String> concatenateString = (a , b) -> {return a + b;};
+
+        MyMessageInterface printString = (a) -> { System.out.println(a);};
+
+        System.out.println("addOperation: " + addOperation.process(1, 1));
+        System.out.println("multiplyOperation: " + multiplyOperation.process(2, 5));
+        System.out.println("minusOperation: " + minusOperation.process(10, 2));
+        System.out.println("concatenateString: " + concatenateString.process("dog and ", "cat"));
+        printString.printMessage("dog and cat via printString");
     
     }
 }
